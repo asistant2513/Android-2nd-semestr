@@ -1,0 +1,40 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1">
+        <title>Bands</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="assets/materialize.min.css"  media="screen,projection"/>
+
+        <script src="assets/jquery-3.5.1.min.js"></script>
+        <script src="code/data.js"></script>
+        <script src="code/bands.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </head>
+    <body>
+        <nav class="naw-wrapper">
+            <a class="brand-logo">Rock bands</a>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <form>
+                    <div class="input-field col s12">
+                        <label for="name">Name</label>
+                        <input type="text" class="validate" id="name" placeholder="Band`s name"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" class="validate" id="country" placeholder="Band`s country"/>
+                    </div>
+                    <div class="input-field col s12 right-align">
+                        <a id="save" class="btn-floating btn-large waves-effect waves-light green">
+                            <i class="material-icons">done</i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
