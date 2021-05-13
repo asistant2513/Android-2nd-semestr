@@ -1,0 +1,24 @@
+<div class="row valign-wrapper">
+	<div class="col m6 offset-m3 f12">
+        <h6>{{ member.name }}</h6>
+    </div>
+    <div class="col m3 s6 center-align">
+        <a class="btn-floating waves-effect waves-light blue" (click)="showInfo=!showInfo">
+        <i *ngIf="showInfo" class="material-icons">
+            keyboard_arrow_up
+        </i>
+        <i *ngIf="!showInfo" class="material-icons">
+            keyboard_arrow_down
+        </i>
+        </a>
+    </div>
+</div>
+<div class="info" *ngIf="showInfo">
+    <div class="input-field">
+        <input id="name" [(ngModel)]="member.name" type="text" class="validate">
+        <label for="name" class="active">Member name</label>
+    </div>
+    <a class="rem-row btn-floating waves-effect waves-light red" (click)="remMember()">
+        <i class="material-icons">delete</i>
+    </a>
+</div>

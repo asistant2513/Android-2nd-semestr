@@ -1,0 +1,3 @@
+<h5 class="center-align">List of metal bands</h5>
+<app-new-band></app-new-band>
+<app-band *ngFor="let band of bands; let i = index" [band]="band" [bandName]="i"></app-band>
