@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Metal bands
+    </ion-title>
+    ({{getUsername()}})
+    <ion-buttons slot="secondary">
+      <ion-button routerLink="/login" routerDirection="root">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Bands</ion-label>
+      <ion-button shape="round" fill="outline" color="success" (click)="add()">
+        <ion-icon slot="start" name="add"></ion-icon>
+        Add
+      </ion-button>
+    </ion-list-header>
+
+    <app-band *ngIf="showNew" [isNew]="true" 
+              (addBand)="addBand($event)"
+              (cancelAddingBand) = "showNew=false">
+    </app-band>
+
+    <div *ngFor="let band of bands; let i = index">
+      <ion-item-sliding>
+        <ion-item-options side="start">
+          <ion-item-option (click)="showEdit=i" color="primary">
+            <ion-icon name="create"></ion-icon>
+            Edit
+          </ion-item-option>
+          <ion-item-option color="danger" (click)="delete(i)">
+            <ion-icon name="trash"></ion-icon>
+            Delete
+          </ion-item-option>
+        </ion-item-options>
+        <ion-item (click) ="showEdit=-1">
+          <ion-icon name="people-circle-outline" slot="start"></ion-icon>
+          <ion-label>{{band.name}}</ion-label>
+          <ion-note slot="end">{{band.genre}}</ion-note>
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="secondary" 
+                           routerLink="/members/{{band.name}}"
+                           routerDirection="forward">
+            <ion-icon name="reorder"></ion-icon>
+            Members
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+      <app-band *ngIf="showEdit==i" [isNew]="false" 
+                [band]="band">
+      </app-band>
+    </div>
+    <ion-item>
+      <ion-button color="secondary" 
+                  routerLink="/data-sender"
+                  routerDirection="forward">
+        To Data sender
+      </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">{{dataFromOther}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
